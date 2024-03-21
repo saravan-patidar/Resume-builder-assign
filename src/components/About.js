@@ -41,32 +41,33 @@ const About = ({ userInfo }) => {
           </div>
           <div className="dodo_progress">
             <ul>
-              {skills
-                .sort((a, b) => a.sequence - b.sequence)
-                .map((skill) => {
-                  const { percentage, image, _id } = skill;
-                  return (
-                    <li key={_id}>
-                      <div className="list_inner">
-                        <div
-                          className="progress_inner skillsInner___"
-                          data-value={percentage}
-                          data-color="#000"
-                        >
-                          <div className="background">
-                            <div className="bar">
-                              <div className="bar_in" />
+              {skills &&
+                skills
+                  .sort((a, b) => a.sequence - b.sequence)
+                  .map((skill) => {
+                    const { percentage, image, _id } = skill;
+                    return (
+                      <li key={_id}>
+                        <div className="list_inner">
+                          <div
+                            className="progress_inner skillsInner___"
+                            data-value={percentage}
+                            data-color="#000"
+                          >
+                            <div className="background">
+                              <div className="bar">
+                                <div className="bar_in" />
+                              </div>
+                            </div>
+                            <div className="percent">
+                              <img className="svg" src={image.url} alt="" />
+                              <span className="number">{percentage}%</span>
                             </div>
                           </div>
-                          <div className="percent">
-                            <img className="svg" src={image.url} alt="" />
-                            <span className="number">{percentage}%</span>
-                          </div>
                         </div>
-                      </div>
-                    </li>
-                  );
-                })}
+                      </li>
+                    );
+                  })}
             </ul>
           </div>
         </div>
