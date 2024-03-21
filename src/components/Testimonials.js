@@ -64,7 +64,7 @@ const Testimonials = ({ userInfo }) => {
     return "";
   };
 
-  return (
+  return testimonials &&(
     <div className="tonni_tm_section">
       <div className="tonni_tm_testimonials">
         <div className="container">

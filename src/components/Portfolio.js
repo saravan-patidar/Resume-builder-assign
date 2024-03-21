@@ -5,7 +5,8 @@ import DetailsPopup from "./popup/DetailsPopup";
 import { FaGithub } from "react-icons/fa";
 
 const Portfolio = ({ userInfo }) => {
-  const { projects, about } = userInfo?.user;
+  const portfolioInfo = userInfo?.user || {};
+  const { projects, about } = portfolioInfo;
   const [activeDetailsPopup, setActiveDetailsPopup] = useState(false);
   // Isotope
   useEffect(() => {

@@ -1,5 +1,6 @@
 const Home = ({ userInfo }) => {
-  const { name } = userInfo?.user?.about;
+  const aboutInfo = userInfo?.user?.about || {};
+  const { name } = aboutInfo;
   return (
     <div className="tonni_tm_section" id="home">
       <div className="tonni_tm_hero">
