@@ -21,7 +21,11 @@ const Service = ({ userInfo }) => {
               <div className="service_list">
                 <ul>
                   {services.map((service) => (
-                    <li className="wow fadeInUp" data-wow-duration="1s">
+                    <li
+                      className="wow fadeInUp"
+                      data-wow-duration="1s"
+                      key={service._id}
+                    >
                       <div className="list_inner">
                         <img className="svg" src={service.image.url} alt="" />
                         <div className="title">

@@ -39,9 +39,14 @@ const TimeLine = ({ userInfo }) => {
                       startDate,
                       endDate,
                       icon,
+                      _id,
                     } = list;
                     return (
-                      <li className="wow fadeInUp" data-wow-duration="1s">
+                      <li
+                        className="wow fadeInUp"
+                        key={_id}
+                        data-wow-duration="1s"
+                      >
                         <ul className="items">
                           <li>
                             <div className="list_inner">

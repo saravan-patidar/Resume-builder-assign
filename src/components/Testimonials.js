@@ -125,6 +125,7 @@ const Testimonials = ({ userInfo }) => {
                         <li
                           className={activeImg(review, "review")}
                           data-index={_id}
+                          key={_id}
                         >
                           <p>{review}</p>
                         </li>
@@ -134,7 +135,7 @@ const Testimonials = ({ userInfo }) => {
                 </div>
                 <div className="details">
                   <div className="infos">
-                    <div className="avatars" s>
+                    <div className="avatars">
                       <ul className="grid-sort">
                         {reviewData.current.map((review, i) => (
                           <li className={` grid-item ${i}`} key={i}>

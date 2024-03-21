@@ -24,9 +24,13 @@ const Priceing = ({ userInfo }) => {
             <div className="pricing_list">
               <ul>
                 {services.map((item) => {
-                  const { name, charge } = item;
+                  const { name, charge, _id } = item;
                   return (
-                    <li className="wow fadeInUp" data-wow-duration="1s">
+                    <li
+                      className="wow fadeInUp"
+                      data-wow-duration="1s"
+                      key={_id}
+                    >
                       <div className="list_inner">
                         <span className="icon">
                           <img
@@ -84,7 +88,6 @@ const Priceing = ({ userInfo }) => {
                     </li>
                   );
                 })}
-                
               </ul>
               <span className="shape">
                 <img className="svg" src="img/svg/icon11.svg" alt="" />
