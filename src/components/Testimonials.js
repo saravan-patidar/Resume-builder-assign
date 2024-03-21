@@ -44,7 +44,8 @@ import { useRef, useState } from "react";
 // ];
 
 const Testimonials = ({ userInfo }) => {
-  const { testimonials } = userInfo?.user;
+  // const { testimonials } = userInfo?.user;
+  const { testimonials = [] } = userInfo?.user ?? {};
 
   const [active, setActive] = useState(testimonials[0]);
 
@@ -64,125 +65,131 @@ const Testimonials = ({ userInfo }) => {
     return "";
   };
 
-  return testimonials &&(
-    <div className="tonni_tm_section">
-      <div className="tonni_tm_testimonials">
-        <div className="container">
-          <div
-            className="testimonials_inner wow fadeInUp"
-            data-wow-duration="1s"
-          >
-            <span className="shape">
-              <img className="svg anim_circle" src="img/svg/icon9.svg" alt="" />
-            </span>
-            <span className="shape2">
-              <img className="svg" src="img/svg/icon12.svg" alt="" />
-            </span>
-            <div className="leftpart">
-              <ul>
-                {testimonials.map((item, i) => {
-                  const { image, _id } = item;
-                  const url = image && image?.url;
-                  return (
-                    <li
-                      className={activeImg(image, "image")}
-                      key={_id}
-                      data-index={_id}
-                    >
-                      <div className="image">
-                        <img src={url} alt="" />
-                        <div
-                          className="main"
-                          data-img-url={url}
-                          style={{
-                            backgroundImage: `url(${url})`,
-                          }}
-                        />
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-            <div className="rightpart">
-              <div className="rightpart_in">
-                <div className="main_title">
-                  <h3>
-                    <span className="big">
-                      Testimonials
-                      <span className="small">
+  return (
+    testimonials.length > 0 && (
+      <div className="tonni_tm_section">
+        <div className="tonni_tm_testimonials">
+          <div className="container">
+            <div
+              className="testimonials_inner wow fadeInUp"
+              data-wow-duration="1s"
+            >
+              <span className="shape">
+                <img
+                  className="svg anim_circle"
+                  src="img/svg/icon9.svg"
+                  alt=""
+                />
+              </span>
+              <span className="shape2">
+                <img className="svg" src="img/svg/icon12.svg" alt="" />
+              </span>
+              <div className="leftpart">
+                <ul>
+                  {testimonials.map((item, i) => {
+                    const { image, _id } = item;
+                    const url = image && image?.url;
+                    return (
+                      <li
+                        className={activeImg(image, "image")}
+                        key={_id}
+                        data-index={_id}
+                      >
+                        <div className="image">
+                          <img src={url} alt="" />
+                          <div
+                            className="main"
+                            data-img-url={url}
+                            style={{
+                              backgroundImage: `url(${url})`,
+                            }}
+                          />
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <div className="rightpart">
+                <div className="rightpart_in">
+                  <div className="main_title">
+                    <h3>
+                      <span className="big">
                         Testimonials
-                        <img className="svg" src="img/svg/quote.svg" alt="" />
+                        <span className="small">
+                          Testimonials
+                          <img className="svg" src="img/svg/quote.svg" alt="" />
+                        </span>
                       </span>
-                    </span>
-                  </h3>
-                </div>
-                <div className="quotes">
-                  <ul>
-                    {testimonials.map((item) => {
-                      const { review, _id } = item;
-                      return (
-                        <li
-                          className={activeImg(review, "review")}
-                          data-index={_id}
-                          key={_id}
-                        >
-                          <p>{review}</p>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-                <div className="details">
-                  <div className="infos">
-                    <div className="avatars">
-                      <ul className="grid-sort">
-                        {reviewData.current.map((review, i) => (
-                          <li className={` grid-item ${i}`} key={i}>
-                            <span onClick={() => activeDotFun(review, i)}>
-                              <div
-                                data-img-url={review && review?.image?.url}
-                                style={{
-                                  backgroundImage: `url(${
-                                    review && review?.image?.url
-                                  })`,
-                                }}
-                              />
-                            </span>
-                            <span className="hidden">1</span>
+                    </h3>
+                  </div>
+                  <div className="quotes">
+                    <ul>
+                      {testimonials.map((item) => {
+                        const { review, _id } = item;
+                        return (
+                          <li
+                            className={activeImg(review, "review")}
+                            data-index={_id}
+                            key={_id}
+                          >
+                            <p>{review}</p>
                           </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="short">
-                      <ul className="name">
-                        {testimonials.map((user, i) => {
-                          const { name, _id } = user;
-                          return (
-                            <li
-                              className={activeImg(name, "name")}
-                              data-index={_id}
-                              key={_id}
-                            >
-                              <h3>{name}</h3>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div className="details">
+                    <div className="infos">
+                      <div className="avatars">
+                        <ul className="grid-sort">
+                          {reviewData.current.map((review, i) => (
+                            <li className={` grid-item ${i}`} key={i}>
+                              <span onClick={() => activeDotFun(review, i)}>
+                                <div
+                                  data-img-url={review && review?.image?.url}
+                                  style={{
+                                    backgroundImage: `url(${
+                                      review && review?.image?.url
+                                    })`,
+                                  }}
+                                />
+                              </span>
+                              <span className="hidden">1</span>
                             </li>
-                          );
-                        })}
-                      </ul>
-                      <ul className="job">
-                        {testimonials.map((user, i) => {
-                          const { position, _id } = user;
-                          return (
-                            <li
-                              className={activeImg(position, "position")}
-                              data-index={_id}
-                              key={_id}
-                            >
-                              <h3>{position}</h3>
-                            </li>
-                          );
-                        })}
-                      </ul>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="short">
+                        <ul className="name">
+                          {testimonials.map((user, i) => {
+                            const { name, _id } = user;
+                            return (
+                              <li
+                                className={activeImg(name, "name")}
+                                data-index={_id}
+                                key={_id}
+                              >
+                                <h3>{name}</h3>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                        <ul className="job">
+                          {testimonials.map((user, i) => {
+                            const { position, _id } = user;
+                            return (
+                              <li
+                                className={activeImg(position, "position")}
+                                data-index={_id}
+                                key={_id}
+                              >
+                                <h3>{position}</h3>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -191,7 +198,7 @@ const Testimonials = ({ userInfo }) => {
           </div>
         </div>
       </div>
-    </div>
+    )
   );
 };
 export default Testimonials;

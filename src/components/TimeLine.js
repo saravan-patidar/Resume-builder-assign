@@ -1,5 +1,5 @@
 const TimeLine = ({ userInfo }) => {
-  const { timeline } = userInfo?.user;
+  const { timeline } = userInfo?.user ?? {};
 
   const compare = (a, b) => {
     const A = a.startDate.slice(0, 10);

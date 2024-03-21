@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import ContactPopup from "./popup/ContactPopup";
 
 const Priceing = ({ userInfo }) => {
-  const { services } = userInfo?.user;
+  const { services } = userInfo?.user || {};
   const [active, setActive] = useState(false);
   return (
     services && (
