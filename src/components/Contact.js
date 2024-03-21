@@ -3,8 +3,7 @@ import Counter from "./Counter";
 import ContactPopup from "./popup/ContactPopup";
 
 const Contact = ({ userInfo }) => {
-  const socialInfo = userInfo?.user || {};
-  const { social_handles } = socialInfo;
+  const { social_handles = [] } = userInfo?.user || {};
   const [active, setActive] = useState(false);
   return (
     <Fragment>

@@ -1,7 +1,7 @@
 const Service = ({ userInfo }) => {
   const { services } = userInfo?.user ?? {};
   return (
-    services && (
+    services.length > 0 && (
       <div className="tonni_tm_section" id="service">
         <div className="tonni_tm_service">
           <div className="container bigger">
