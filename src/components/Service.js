@@ -1,5 +1,5 @@
 const Service = ({ userInfo }) => {
-  const { services } = userInfo?.user ?? {};
+  const { services = [] } = userInfo?.user ?? {};
   return (
     services.length > 0 && (
       <div className="tonni_tm_section" id="service">
